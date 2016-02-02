@@ -83,3 +83,12 @@ git checkout "newBranch"
 
 查询现在的分支
 git branch
+
+四、合并分支
+首先指向到master分支
+git checkout master
+
+合并分支的语句 ，把某分支合并至当前的分支
+git merge "newBranch"
+
+
