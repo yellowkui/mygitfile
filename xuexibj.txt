@@ -1,0 +1,18 @@
+GIT 学习笔记 2016-02-02
+
+注册自己的账号
+git config --global user.name "yellowkui"
+git config --global user.email "huangkui198707@qq.com"
+
+创建目录
+cd e:
+mkdir mygitfile
+cd mygitfile
+
+在当前目录中建立版本库，这个时候文件中会多出一个.git的文件
+git init
+
+
+
+
+
