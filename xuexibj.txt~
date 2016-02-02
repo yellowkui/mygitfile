@@ -1,0 +1,45 @@
+GIT 学习笔记 2016-02-02
+
+注册自己的账号
+git config --global user.name "yellowkui"
+git config --global user.email "huangkui198707@qq.com"
+
+创建目录
+cd e:
+mkdir mygitfile
+cd mygitfile
+
+在当前目录中建立版本库，这个时候文件中会多出一个.git的文件
+git init
+
+添加文件至缓冲区
+git add readme.txt
+
+提交文件至版本库中
+git commit -m "描述"
+如果没有输入"-m"系统会进入VIM的编辑状态进行描述的输入。
+git commit 提交命令一次可以提交多个文件
+
+git commit -am "描述"
+
+
+git status
+了解当前仓库的状态
+
+git
+
+git add -i
+检查当前文件中有多少个文件添加到缓冲区
+
+git log
+可以检查文件修改日志
+
+git reset --hard head^ 可以回滚到上一个版本
+
+git reset --hard head~100 回滚前100个版本
+
+如果回滚后发现回滚错误，可以通过ID返回，通过LOG中的ID
+git reset --hard ID
+
+
+
