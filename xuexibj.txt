@@ -84,6 +84,9 @@ git checkout "newBranch"
 查询现在的分支
 git branch
 
+删除分支
+git branch -b "newBranch"
+
 四、合并分支
 首先指向到master分支
 git checkout master
