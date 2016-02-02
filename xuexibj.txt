@@ -50,6 +50,8 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 git remote add origin git@github.com:yellowkui/mygitfile.git
 git remote add origin https://github.com/yellowkui/mygitfile.git
 
+如果上面关联错了通过下面语句删除
+git remote rm origin
 
 把本地库内容推送至远程库
 git push -u origin master
@@ -60,3 +62,6 @@ git push -u origin master
 以后推送时，只需要下面语句即可
 git push origin master
 
+
+远程克隆命令，有两种协议一种SSH协议，一种是HTTPS协议
+git clone git@github.com:yellowkui/newWorld.git
