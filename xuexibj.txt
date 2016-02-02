@@ -24,12 +24,8 @@ git commit -am "描述"
 
 
 git status
-了解当前仓库的状态
+了解当前仓库的状态，很常用
 
-git
-
-git add -i
-检查当前文件中有多少个文件添加到缓冲区
 
 git log
 可以检查文件修改日志
@@ -43,4 +39,16 @@ git reset --hard ID
 
 git reflog 提供了每次文件回滚和提交的记录
 
+git rm readme.txt 提交删除文件的信息到缓冲区,提交后同样使用commit提交
+
+二、学习建立远程仓库
+
+生成SSH
+$ ssh-keygen -t rsa -C "youremail@example.com"
+
+关联远程库
+git remote add origin git@github.com:yellowkui/mygitfile.git
+
+把本地库内容推送至远程库
+git push -u origin master
 
