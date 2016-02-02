@@ -1,8 +1,8 @@
 GIT 学习笔记 2016-02-02
 
 注册自己的账号
-git config --global user.name "yellowkui"
-git config --global user.email "huangkui198707@qq.com"
+git config --global user.name ""
+git config --global user.email ""
 
 创建目录
 cd e:
@@ -48,7 +48,12 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 关联远程库
 git remote add origin git@github.com:yellowkui/mygitfile.git
+git remote add origin https://github.com/yellowkui/mygitfile.git
+
 
 把本地库内容推送至远程库
+git push -u origin master
+
+
 git push -u origin master
 
