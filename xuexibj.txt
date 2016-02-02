@@ -1,6 +1,7 @@
+	
 GIT 学习笔记 2016-02-02
 
-注册自己的账号
+本次注册自己的账号
 git config --global user.name ""
 git config --global user.email ""
 
@@ -17,6 +18,8 @@ git add readme.txt
 
 提交文件至版本库中
 git commit -m "描述"
+
+
 如果没有输入"-m"系统会进入VIM的编辑状态进行描述的输入。
 git commit 提交命令一次可以提交多个文件
 
@@ -30,9 +33,11 @@ git status
 git log
 可以检查文件修改日志
 
+
 git reset --hard head^ 可以回滚到上一个版本
 
 git reset --hard head~100 回滚前100个版本
+
 
 如果回滚后发现回滚错误，可以通过ID返回，通过LOG中的ID
 git reset --hard ID
@@ -65,3 +70,16 @@ git push origin master
 
 远程克隆命令，有两种协议一种SSH协议，一种是HTTPS协议
 git clone git@github.com:yellowkui/newWorld.git
+
+
+三、分支操作
+
+建立一个新分支newBranch,并指向这个分支
+git checkout -b "newBranch"
+
+上面的命令也可以通过实现
+git branch "newBranch"
+git checkout "newBranch"
+
+查询现在的分支
+git branch
