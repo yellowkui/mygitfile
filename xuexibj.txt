@@ -54,6 +54,9 @@ git remote add origin https://github.com/yellowkui/mygitfile.git
 把本地库内容推送至远程库
 git push -u origin master
 
-
+首次将数据推送至远程库时需要加 -u的参数
 git push -u origin master
+
+以后推送时，只需要下面语句即可
+git push origin master
 
