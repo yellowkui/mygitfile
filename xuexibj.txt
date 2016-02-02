@@ -36,5 +36,10 @@ git log
 
 git reset --hard head^ 可以回滚到上一个版本
 
+git reset --hard head~100 回滚前100个版本
+
+如果回滚后发现回滚错误，可以通过ID返回，通过LOG中的ID
+git reset --hard ID
+
 
 
