@@ -20,7 +20,17 @@ git commit -m "描述"
 如果没有输入"-m"系统会进入VIM的编辑状态进行描述的输入。
 git commit 提交命令一次可以提交多个文件
 
+git commit -am "描述"
+
+
+git status
+了解当前仓库的状态
+
+git
+
+git add -i
 检查当前文件中有多少个文件添加到缓冲区
+
 
 
 
