@@ -31,6 +31,10 @@ git
 git add -i
 检查当前文件中有多少个文件添加到缓冲区
 
+git log
+可以检查文件修改日志
+
+git reset --hard head^ 可以回滚到上一个版本
 
 
 
