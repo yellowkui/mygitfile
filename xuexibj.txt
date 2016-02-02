@@ -94,4 +94,8 @@ git checkout master
 合并分支的语句 ，把某分支合并至当前的分支
 git merge "newBranch"
 
-123
+
+
+分支测试
+
+
