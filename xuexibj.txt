@@ -78,7 +78,8 @@ git push -u origin master
 
 6、以后推送时，只需要下面语句即可
 git push origin master
-
+提交到另一个分支
+git push origin dev
 
 7、远程克隆命令，有两种协议一种SSH协议，一种是HTTPS协议
 git clone git@github.com:yellowkui/newWorld.git
@@ -123,4 +124,15 @@ git merge "newBranch"
 git log --graph 
 
 
-#修复BUG代码#
+
+六、工作区暂存
+
+1、当需要修复BUG ，而当前进行的修改还不需要立即提交时，可以通过暂存的命令来实现
+git stash
+
+2、恢复工作区使用
+git stash pop 进行恢复
+
+3、查询暂存的工作区
+git stash list
+
