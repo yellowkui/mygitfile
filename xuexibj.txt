@@ -136,6 +136,9 @@ git stash pop 进行恢复
 3、查询暂存的工作区
 git stash list
 
+4、多次暂存工作区时，指定对应工作区进行恢复
+ git stash apply stash@{0}
+
 
 #七、远程分支管理
 
