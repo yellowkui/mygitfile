@@ -97,5 +97,6 @@ git merge "newBranch"
 
 
 分支测试
-
+两个都保留
 master
+new line
