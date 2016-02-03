@@ -1,107 +1,124 @@
 	
 GIT 学习笔记 2016-02-02
 
-本次注册自己的账号
+#一、开始吧，hello git!
+
+1、首先注册自己的账号
 git config --global user.name ""
 git config --global user.email ""
 
-创建目录
+2、创建目录
 cd e:
 mkdir mygitfile
 cd mygitfile
 
-在当前目录中建立版本库，这个时候文件中会多出一个.git的文件
+3、在当前目录中建立版本库，这个时候文件中会多出一个.git的文件
 git init
 
-添加文件至缓冲区
+
+二、学习GIT的版本库提交操作
+
+1、添加文件至缓冲区
 git add readme.txt
 
-提交文件至版本库中
+2、提交文件至版本库中
 git commit -m "描述"
 
 
-如果没有输入"-m"系统会进入VIM的编辑状态进行描述的输入。
+3、如果没有输入"-m"系统会进入VIM的编辑状态进行描述的输入。
 git commit 提交命令一次可以提交多个文件
 
 git commit -am "描述"
 
 
-git status
+4、git status
 了解当前仓库的状态，很常用
 
 
-git log
+5、git log
 可以检查文件修改日志
 
 
-git reset --hard head^ 可以回滚到上一个版本
+三、版本库的撤销操作
 
-git reset --hard head~100 回滚前100个版本
+1、可以回滚到上一个版本
+git reset --hard head^ 
 
+2、回滚前100个版本
+git reset --hard head~100 
 
-如果回滚后发现回滚错误，可以通过ID返回，通过LOG中的ID
+3、如果回滚后发现回滚错误，可以通过ID返回，通过LOG中的ID
 git reset --hard ID
 
-git reflog 提供了每次文件回滚和提交的记录
+4、提供了每次文件回滚和提交的记录
+git reflog 
 
-git rm readme.txt 提交删除文件的信息到缓冲区,提交后同样使用commit提交
+5、提交“删除操作”的信息到缓冲区,提交后同样使用commit提交
+git rm readme.txt 
 
-二、学习建立远程仓库
 
-生成SSH
+
+#三、学习建立远程仓库
+
+1、生成SSH
 $ ssh-keygen -t rsa -C "youremail@example.com"
 
-关联远程库
+2、关联远程库
 git remote add origin git@github.com:yellowkui/mygitfile.git
 git remote add origin https://github.com/yellowkui/mygitfile.git
 
-如果上面关联错了通过下面语句删除
+3、如果上面关联错了通过下面语句删除
 git remote rm origin
 
-把本地库内容推送至远程库
+4、把本地库内容推送至远程库
 git push -u origin master
 
-首次将数据推送至远程库时需要加 -u的参数
+5、首次将数据推送至远程库时需要加 -u的参数
 git push -u origin master
 
-以后推送时，只需要下面语句即可
+6、以后推送时，只需要下面语句即可
 git push origin master
 
 
-远程克隆命令，有两种协议一种SSH协议，一种是HTTPS协议
+7、远程克隆命令，有两种协议一种SSH协议，一种是HTTPS协议
 git clone git@github.com:yellowkui/newWorld.git
 
 
-同步本地的数据
+8、同步本地的数据
 git pull origin master
 
 
-三、分支操作
 
-建立一个新分支newBranch,并指向这个分支
+#四、分支操作
+
+1、建立一个新分支newBranch,并指向这个分支
 git checkout -b "newBranch"
 
-上面的命令也可以通过实现
+2、上面的命令也可以通过实现
 git branch "newBranch"
 git checkout "newBranch"
 
-查询现在的分支
+3、查询现在的分支
 git branch
 
-删除分支
+4、删除分支
 git branch -b "newBranch"
 
-四、合并分支
-首先指向到master分支
+
+
+#五、合并分支
+1、首先指向到master分支
 git checkout master
 
-合并分支的语句 ，把某分支合并至当前的分支
+2、合并分支的语句 ，把某分支合并至当前的分支
 git merge "newBranch"
 
-当合并冲突时，提示
+3、当合并冲突时，提示
 "Automatic merge failed; fix conflicts and then commit the result."
 
-那么通过git status 查看是哪些文件冲突了，打开文件后进行冲突的处理
+4、那么通过git status 查看是哪些文件冲突了，打开文件后进行冲突的处理
 处理完毕后。执行git commit 命令，进行解决
 
+5、命令可以查看合并的情况与分支图
+git log --graph 
 
