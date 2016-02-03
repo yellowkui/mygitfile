@@ -1,0 +1,13 @@
+
+python 学习笔记 2016-02-03
+
+一、编辑器
+
+1、下载工具
+
+
+2、使编辑器可以按F5编译python
+au BufRead *.py map <buffer> <F5> :w<CR>:! python % <CR>
+把以上语句放入vim的 vimvc文件中
+
+
