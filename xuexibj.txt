@@ -122,3 +122,5 @@ git merge "newBranch"
 5、命令可以查看合并的情况与分支图
 git log --graph 
 
+
+#修复BUG代码#
