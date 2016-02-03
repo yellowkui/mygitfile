@@ -137,9 +137,4 @@ git stash pop ½øĞĞ»Ö¸´
 git stash list
 
 
-<<<<<<< Updated upstream
-²âÊÔstash
-=======
-new line
 
->>>>>>> Stashed changes
