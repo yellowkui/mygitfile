@@ -47,9 +47,42 @@ array= ['a','b','c']
 #用括号进行赋值
 #################
 
-tp_s = ('a','b','c')
-print(tp_s[0])
-
+#定义个一个tuple
+##p_s = ('a','b','c')
+#rint(tp_s[0])
+#
 #--定义一个空的tuple
-none_tuple = ()
-print(none_tuple)
+#one_tuple = ()
+#rint(none_tuple)
+#
+
+#################################
+# dict 的用法
+#说明：dict （词典） 其实类似哈希表 ，有一个key 和 一个value , 使用的是打括号
+#定义的KEY必须是不可以变的值
+###################################
+
+#--定义一个dict
+
+d = {"a":22,"b":33,"c":44}
+
+#d["a"] = 100
+#d["d"] = 999  #可以通过直接赋值的方式增加到dict中
+#print(d["a"])
+#print(d["c"])
+#print(d["d"])
+#print(len(d))
+#
+#print("a" in d) # 检查key是否在dict中存在
+
+
+print(d.get("a",1))  # get方法可以过去dict的值，如果获取不到值会返回 1 
+print(d.get("g",1))
+
+
+#删除一个dict元素
+d.pop("a")
+print(d)
+
+
+print(hex(10))
