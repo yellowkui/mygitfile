@@ -19,12 +19,12 @@
 #else:
 #    print('你输入的数字['+a+']小于100!')
 
-
+<Plug>AirlineTablineRefresh<Plug>AirlineTablineRefresh
 #########################
 #体重BIM判断
 ##########################
 height = float(input(r"请输入你的身高，比如170，输入‘1.70’"+"\n"))
-weight = float(input(r"请输入你的体重，比例如70KG，输入70"+"\n"))
+weight = float(input(r"请输入你的体重，比例如70KG，输入70"+"\n
 
 bmi = weight/(height**2)
 print("你的BMI指数是%.3f" % bmi)
@@ -43,11 +43,16 @@ elif(bmi>32):
 
 
 
-    1
-    2
-    3
-    4
-    44
+####################
+if 语句的练习 :2016-08-17
+########################
 
+a = int(input("请输入一个数字?"));     
+'注意这里是需要进行转换的
+
+if(a == 1):
+    print("你输入了一个数字1")
+elif (a == 2):                         
+    print("你输入了一个数字2")
 
 
