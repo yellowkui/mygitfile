@@ -1,0 +1,26 @@
+
+python 学习笔记 2016-02-03
+
+一、编辑器
+
+1、下载工具
+下载vim7
+
+
+2、使编辑器可以按F5编译python
+au BufRead *.py map <buffer> <F5> :w<CR>:! python % <CR>
+把以上语句放入vim的 vimvc文件中
+
+
+3、
+批量注释时，通过ctrl + q 进入块的选择模式，按方向选择好后，按
+大写I，然后输入注释的符号，比如#
+
+批量取消注释时，通过 ctrl + q 进入块的选择模式，按方向选择好后，按d清除即可
+
+
+
+
+4、查看文件编码
+set fileencoding
+
