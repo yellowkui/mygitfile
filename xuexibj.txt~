@@ -1,0 +1,161 @@
+	
+GIT 学习笔记 2016-02-02
+
+#一、开始吧，hello git!
+
+1、首先注册自己的账号
+git config --global user.name ""
+git config --global user.email ""
+
+2、创建目录
+cd e:
+mkdir mygitfile
+cd mygitfile
+
+3、在当前目录中建立版本库，这个时候文件中会多出一个.git的文件
+git init
+
+
+二、学习GIT的版本库提交操作
+
+1、添加文件至缓冲区
+git add readme.txt
+
+2、提交文件至版本库中
+git commit -m "描述"
+
+
+3、如果没有输入"-m"系统会进入VIM的编辑状态进行描述的输入。
+git commit 提交命令一次可以提交多个文件
+
+git commit -am "描述"
+
+
+4、git status
+了解当前仓库的状态，很常用
+
+
+5、git log
+可以检查文件修改日志
+
+
+三、版本库的撤销操作
+
+1、可以回滚到上一个版本
+git reset --hard head^ 
+
+2、回滚前100个版本
+git reset --hard head~100 
+
+3、如果回滚后发现回滚错误，可以通过ID返回，通过LOG中的ID
+git reset --hard ID
+
+4、提供了每次文件回滚和提交的记录
+git reflog 
+
+5、提交“删除操作”的信息到缓冲区,提交后同样使用commit提交
+git rm readme.txt 
+
+
+
+#三、学习建立远程仓库
+
+1、生成SSH
+$ ssh-keygen -t rsa -C "youremail@example.com"
+
+2、关联远程库
+git remote add origin git@github.com:yellowkui/mygitfile.git
+git remote add origin https://github.com/yellowkui/mygitfile.git
+
+3、如果上面关联错了通过下面语句删除
+git remote rm origin
+
+4、把本地库内容推送至远程库
+git push -u origin master
+
+5、首次将数据推送至远程库时需要加 -u的参数
+git push -u origin master
+
+6、以后推送时，只需要下面语句即可
+git push origin master
+提交到另一个分支
+git push origin dev
+
+7、远程克隆命令，有两种协议一种SSH协议，一种是HTTPS协议
+git clone git@github.com:yellowkui/newWorld.git
+
+
+8、同步本地的数据
+git pull origin master
+
+
+
+#四、分支操作
+
+1、建立一个新分支newBranch,并指向这个分支
+git checkout -b "newBranch"
+
+2、上面的命令也可以通过实现
+git branch "newBranch"
+git checkout "newBranch"
+
+3、查询现在的分支
+git branch
+
+4、删除分支
+git branch -b "newBranch"
+
+
+
+#五、合并分支
+1、首先指向到master分支
+git checkout master
+
+2、合并分支的语句 ，把某分支合并至当前的分支
+git merge "newBranch"
+
+3、当合并冲突时，提示
+"Automatic merge failed; fix conflicts and then commit the result."
+
+4、那么通过git status 查看是哪些文件冲突了，打开文件后进行冲突的处理
+处理完毕后。执行git commit 命令，进行解决
+
+5、命令可以查看合并的情况与分支图
+git log --graph 
+
+
+
+#六、工作区暂存
+
+1、当需要修复BUG ，而当前进行的修改还不需要立即提交时，可以通过暂存的命令来实现
+git stash
+
+2、恢复工作区使用
+git stash pop 进行恢复
+
+3、查询暂存的工作区
+git stash list
+
+4、多次暂存工作区时，指定对应工作区进行恢复
+ git stash apply stash@{0}
+
+
+#七、远程分支管理
+当你推送代码到远程分支去的时候，如果远程端的代码已经从你上次PULL下来后已经被修改了，那么你需要再次PULL一次远程的代码下来，然后解决冲突后再进行PUSH的操作，将数据推送至远程仓库。
+
+#八、标签
+添加标签类似于添加一个索引，理解成书签也可以。
+
+1、添加一个标签
+git tag "v1.0"
+
+2、查看当前有的标签
+git tag 
+
+3、通过git log 查询调的ID，然后用下面命令完成
+git tag "v1.0" ID
+
+4、查看标签描述
+git show "v1.0"
+
+
