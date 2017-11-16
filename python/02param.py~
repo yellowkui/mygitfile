@@ -80,7 +80,11 @@ c = 'hello world!'
 print(c)
 
 r = 'hello python!'
-print (c+' '+r) 
+print (c+' '+r)
+
+
+abc = 'test'
+print (abc)
 
 
 
