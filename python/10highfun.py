@@ -29,7 +29,7 @@
 
 
 #        
-#
+<Plug>AirlineTablineRefresh<Plug>AirlineTablineRefresh#
 #def newzhzm(x):
 #    x = x.capitalize()
 #    return x
@@ -131,23 +131,26 @@
 def log(func):                      
     def apper(*args , **kw):
         print('call:%s '% func.__name__)
-        return(func(*args,**kw))
+        return(func(*args,**kw)
     return apper
 
 @log                 ### 关键语句进行装饰器定义
 def printnow():
     print('2016-01-01')
 
-printnow()
 
 
+
+
+printnow
 
 
 ####   装饰器 带函数  2016-09-18
 ####装饰器必须定义在被装饰函数前
 
 
-def log_()
+
+
 
 
 

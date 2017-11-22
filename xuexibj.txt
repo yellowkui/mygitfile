@@ -63,6 +63,9 @@ git rm readme.txt
 1、生成SSH
 $ ssh-keygen -t rsa -C "youremail@example.com"
 
+全部默认回车就好，生成好了打开id_rsa.pub文件内容。到gitpub上进行SSH的注册填写。
+多个电脑可以生成多个SSH
+
 2、关联远程库
 git remote add origin git@github.com:yellowkui/mygitfile.git
 git remote add origin https://github.com/yellowkui/mygitfile.git
