@@ -118,44 +118,48 @@
 #import System
 
 
-
-
+#########################################################################
 ### 面向对象高级编程
+###面向对象高级编程
+###面向对象高级编程
+#########################################################################
+
 ### 1 为实例添加方法，为类增加方法。
 
-class MyObject(object):
-    pass
+#class MyObject(object):
+#    pass
+#
+#a = MyObject()
+#
+#def printname():
+#    print('print name')
+#
+#
+#def printscore(self):
+#    print('print score')
+#
+#
+#### 1.1 第一种方式，给对象进行添加方法
+#a.u_printname = printname
+#
+#a.u_printname()
+#
+#
+#### 1.2 第二种方式 ，给类添加方法
+#MyObject.printscore = printscore
+#
+#b = MyObject()
+#
+#b.printscore()
+#
+#
 
-a = MyObject()
-
-def printname():
-    print('print name')
-
-
-def printscore(self):
-    print('print score')
-
-
-### 第一种方式，给对象进行添加方法
-a.u_printname = printname
-
-a.u_printname()
-
-
-### 第二中方式 ，给类添加方法
-MyObject.printscore = printscore
-
-b = MyObject()
-
-b.printscore()
-
-
-
-##### 限制类的属性  __slots__
+##### 2 限制类的属性  __slots__
 
 #
 #class Student(object):
-#    __slots__ = ('x','y')    # 这里注意是字符
+#    __slots__ = ('x','y')    # 这里注意是字符  ，用tuple定义允许绑定的属性名称，注意变量需要有前后下划线
+
 #    def __init__(self):
 #        self.x = 'default'
 #
@@ -167,6 +171,7 @@ b.printscore()
 #
 
 
+###### 3  使用 @propert
 
 
 

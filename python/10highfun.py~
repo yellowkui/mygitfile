@@ -29,7 +29,6 @@
 
 
 #        
-#
 #def newzhzm(x):
 #    x = x.capitalize()
 #    return x
@@ -128,20 +127,17 @@
 ####   装饰器  2016-09-18
 ####装饰器必须定义在被装饰函数前
 
-def log(func):                      
-    def apper(*args , **kw):
-        print('call:%s '% func.__name__)
-        return(func(*args,**kw)
-    return apper
-
-@log                 ### 关键语句进行装饰器定义
-def printnow():
-    print('2016-01-01')
-
-
-
-
-
+#def log(func):                      
+#    def apper(*args , **kw):
+#        print('call:%s '% func.__name__)
+#        return(func(*args,**kw)
+#    return apper
+#
+#@log                 ### 关键语句进行装饰器定义
+#def printnow():
+#    print('2016-01-01')
+#
+#
 
 
 
@@ -150,25 +146,35 @@ def printnow():
 
 
 
+### 装饰器作业  尝试输出文本，并在输出前与输出后加入装饰器
 
 
 
+def log(fun):    ###这样的装饰器无法实现前后打印
+    print("i am begining!")
+    print("i am ending")
+    return fun
+
+
+def log2(fun):    ### 这个装饰器就可以实现前后打印
+    def wrapper(*args,**kw):
+        print('begin')
+        fun(*args,**kw)
+        print('end')
+        return fun
+    return wrapper
 
 
 
+@log2
+def printName(self):
+    print(self)
 
 
 
+#a.name = 'abc'
+#a.printName = printName()
 
-
-
-
-
-
-
-
-
-
-
+printName('beijin')
 
 
