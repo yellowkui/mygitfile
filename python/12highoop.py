@@ -108,7 +108,7 @@
 #        if self.a >= 10000:
 #            raise StopIteration()
 #        return self.a
-#
+#http://javtorrent.re/censored/145535/
 #for n in Fib():
 #    print(n)
 #
@@ -116,20 +116,22 @@
 
 
 
-#### __getitem__的使用  使用__iter__不能实现进行具体的位置调用 比如 Fib()[5]
-class Fib(object):
-    def __init__(self):
-        self.a,self.b = 1,2
-
-    def __getitem__(self,value):
-        a ,b = 0,1
-        for n in range(value):
-            a,b = b,a+b
-        return a
-
-print(Fib()[8])
-
-#for a in Fib():
+#### __getitem__的使用  如果希望通过像调用Listn那样调用，比如 Fib()[5]，会提示错误，因为使用__iter__不能实现进行具体的位置调用
+#### ———getitem--就可以实现
+#class Fib(object):
+#    def __init__(self):
+#        self.a,self.b = 1,2
+#
+#    def __getitem__(self,value):
+#        a ,b = 0,1
+#        for n in range(value):
+#            a,b = b,a+b
+#        return a
+#
+#print(Fib()[8])
+#print(Fib()[9])
+#
+##for a in Fib():
 #    print(a)
 #    if a>100:
 #        raise StopIteration()
@@ -138,4 +140,29 @@ print(Fib()[8])
 
 
 
+
+####### 枚举类 ####
+
+###导入枚举类
+#from enum import Enum
+
+###  第一种方法定义了一个枚举类
+#month = Enum('moh',('aa','bb'))  
+#print(month)
+#print(month.aa.value)
+#print(month.bb.value)
+
+### 第二种方法定义一个枚举类
+from enum import Enum
+
+class week(Enum):
+    Sun = 0
+    Mon = 1
+    Tue = 2
+    Wed = 3
+
+m = week.Sun
+
+print(m)
+print(m.value)
 
