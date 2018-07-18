@@ -19,7 +19,7 @@ class get_photo(object):
         self.headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36',
                 'Referer':'http://www.mmjpg.com',
                 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'}
-        self.target = 'http://www.mmjpg.com/hot/'
+        self.target = '/'
 
 
         self.mmids = []
@@ -120,25 +120,6 @@ class get_photo(object):
 
 
 if __name__ == '__main__':
-#调试用
-#    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36',
-#            'Referer':'http://www.mmjpg.com/mm/753',
-#            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'}
-#    url = 'http://www.mmjpg.com/mm/1334/4'
-#    url = 'http://www.mmjpg.com/data.php?id=753&page=8999'
-#
-#    req = requests.get(url = url,headers = headers)
-#    print(req.text)
-##    with closing(req) as r:
-#        with open('e:\\myphoto\\2.jpg', 'ab+') as f:
-#            for chunk in r.iter_content(chunk_size = 1024):
-#                if chunk: crack_headers
-#                    f.write(chunk)
-#                    f.flush()
-#
-#
-
-
 
     photo = get_photo()
     photo.getHome()
