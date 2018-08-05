@@ -12,9 +12,14 @@ import os,random
 from bs4 import BeautifulSoup
 from contextlib import closing
 
+import mysql.connector
+
+
 
 class movie(object):
     def __init__(self):
+        self.url = '' #链接地址
+        self.movieid  = ''
         self.moviename = '' #电影名
         self.daoy = ''   # 导演
         self.zhuy = ''    # 主演
@@ -22,8 +27,11 @@ class movie(object):
         self.jianjie  = ''    # 简介
 
     def printall(self):
+
+        print('电影ID: '+ self.movieid)
         print('电影名称: '+self.moviename)
-        print('导演：'+self.daoy)
+        print('链接地址: '+self.url)
+        print('导演: '+self.daoy)
         print('主演: '+self.zhuy)
         print('编剧: '+self.bianj)
         print('简介：\n '+self.jianjie)
@@ -103,17 +111,26 @@ class get_douban(object):
 
 
 
-    def getMovInfo(self,curl,movie):     #获取电影信息
+    def getMovInfo(self,curl,cmovieid,movie):     #获取电影信息
         s = ''
         req = requests.get(url = curl,headers =  self.headers)
         bs = BeautifulSoup(req.text)
+
+        ## 检查地址的内容是否已经失效
+        if ((bs.find('span',property="v:itemreviewed") is None)):
+            movie.url = curl        
+            movie.movieid = cmovieid
+            print('电影id: %s ,页面不存在' % cmovieid)
+            return  # 跳出函数
+
+
 
         # 01 获取电影名
         movieName = (bs.find_all('span',property="v:itemreviewed")[0].string) #电影名
 
         #03 获取简介
         html_div_span_jj =  bs.find('span',property="v:summary")
-        jianjie = ''
+        jianjie = ''  #定义变量
 
 
         if html_div_span_jj.string is None:
@@ -141,19 +158,69 @@ class get_douban(object):
 
 
         #end 给传入对象赋值
+        movie.url = curl        
+        movie.movieid = cmovieid
         movie.moviename = movieName
         movie.daoy = info_list[0]       #导演
-        movie.zhuy =  info_list[1]      #主演
-        movie.bianj = info_list[2]       #编剧
+        movie.bianj =  info_list[1]      #编剧 
+        movie.zhuy = info_list[2]       #主演
         movie.jianjie = jianjie
 
+
+
+    def insertDb(self,conn,movie):    #写入数据库
+        try:
+            cursor = conn.cursor()
+            ##写入电影信息
+            sql = ('insert into movieinfo (movieid, mname, jianjie,url)  '
+                    'values (%s,%s,%s) ')
+            cursor.execute(sql, [movie.movieid,movie.moviename,movie.jianjie,movie.url])
+#            conn.commit()
+
+
+
+
+            ##写入电影的主演，导演，编剧
+            list_dy = str(movie.daoy).split('/')
+            for i in list_dy:
+                sql = ('insert into movie_dy(movieid,dy) values( %s,%s)')
+                data = [movie.movieid,i]
+                cursor.execute(sql,data)
+
+                
+
+            list_zy = str(movie.zhuy).split('/')
+            for i in list_zy:
+                sql = ('insert into movie_zy(movieid,zy) values( %s,%s)')
+                data = [movie.movieid,i]
+                cursor.execute(sql,data)
+
+
+            list_bj = str(movie.bianj).split('/')
+            for i in list_bj:
+                sql = ('insert into movie_bj(movieid,bj) values( %s,%s)')
+                data = [movie.movieid,i]
+                cursor.execute(sql,data)
+
+
+            conn.commit()
+            print('写入提交成功')
+            
+        finally:
+            cursor.close()     
+
+
+       
+
+        #for movie.
+        #movie.daoy,movie.zhuy,movie.bianj
 
 
 if __name__ == '__main__':
     
     o = get_douban()
     i = 0
-
+    conn = mysql.connector.connect(user='root',password='panda',database='douban',charset='utf8')
 
 #for i in range(10):  #由于top250 总共也就10页
 #        print('读取第%s页。' % i )
@@ -163,16 +230,26 @@ if __name__ == '__main__':
 
 
     o.loadurls('e:\\','doubanmovieurls.txt')
-    print(o.movieUrls)
-    print(o.movieid)
+   # print(o.movieUrls)
+   #print(o.movieid)
 
-#    i = 0
-#    for i in range(10):
-#        m = movie()
-#        o.getMovInfo(o.movieUrls[i],m)
-#        m.printall()
-#        print('\r\r')
-#        time.sleep(2)
+#    m = movie()
+#    print(o.movieUrls[19])
+#    o.getMovInfo(o.movieUrls[19],o.movieid[19],m)
+
+
+    i = 0
+    for i in range(len(o.movieid)):
+        m = movie()
+        o.getMovInfo(o.movieUrls[i],o.movieid[i],m)
+        #m.printall()
+        o.insertDb(conn,m)
+        print('\r\r')
+        print(i)
+        time.sleep(3)
+
+
+
         
 
 
