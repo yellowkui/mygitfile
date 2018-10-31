@@ -162,8 +162,11 @@ class get_douban(object):
         movie.movieid = cmovieid
         movie.moviename = movieName
         movie.daoy = info_list[0]       #导演
-        movie.bianj =  info_list[1]      #编剧 
-        movie.zhuy = info_list[2]       #主演
+        if len(info_list) == 3:   
+            movie.bianj =  info_list[1]      #编剧 
+            movie.zhuy = info_list[2]       #主演
+        else:
+            print('导演，编剧，主演缺失')
         movie.jianjie = jianjie
 
 
@@ -173,7 +176,7 @@ class get_douban(object):
             cursor = conn.cursor()
             ##写入电影信息
             sql = ('insert into movieinfo (movieid, mname, jianjie,url)  '
-                    'values (%s,%s,%s) ')
+                    'values (%s,%s,%s,%s) ')
             cursor.execute(sql, [movie.movieid,movie.moviename,movie.jianjie,movie.url])
 #            conn.commit()
 
@@ -234,12 +237,14 @@ if __name__ == '__main__':
    #print(o.movieid)
 
 #    m = movie()
-#    print(o.movieUrls[19])
-#    o.getMovInfo(o.movieUrls[19],o.movieid[19],m)
+#    i = 163
+#    print(o.movieUrls[i])
+#    o.getMovInfo(o.movieUrls[i],o.movieid[i],m)
 
 
-    i = 0
-    for i in range(len(o.movieid)):
+
+    start = 163
+    for i in range(start,len(o.movieid)):
         m = movie()
         o.getMovInfo(o.movieUrls[i],o.movieid[i],m)
         #m.printall()

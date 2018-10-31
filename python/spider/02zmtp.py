@@ -50,7 +50,7 @@ class get_photo(object):
 
 
 if __name__ == '__main__':
-    path = 'e:\\myphoto\\'
+    path = 'e:\\my\\'
     photo = get_photo()
     photo.getphotoUrls()
     print('开始下载')
