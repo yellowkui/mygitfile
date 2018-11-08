@@ -11,6 +11,7 @@ import scrapy
 class DemoItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    moviename = scrapy.Field()
+    title = scrapy.Field()
+    href =  scrapy.Field()
 
     pass
