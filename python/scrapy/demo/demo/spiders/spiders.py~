@@ -15,13 +15,14 @@ import scrapy
 class demoSpider(scrapy.spiders.Spider):
 
     name = 'demospider'
-    start_urls = {'https://movie.douban.com/top250'}
+    start_urls = {'http://www.qq.com/'}
     pass
     
     def parse (self,response):
         filename = response.url.split("/")[-2]
         with open(filename, 'wb') as f:
             f.write(response.body)
+
 
 
 
