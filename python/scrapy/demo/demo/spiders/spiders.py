@@ -28,7 +28,7 @@ class demoSpider(scrapy.spiders.Spider):
         yw_list = (response.xpath('//ul[@class="yw-list" and @bosszone="yw_1"]/li/a'))
 
         print('开始')
-       # print(yw_list)
+        # print(yw_list)
         for g in yw_list:
             item = DemoItem()
             item['title'] = g.xpath('text()').extract()
