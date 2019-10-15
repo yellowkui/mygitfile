@@ -4,6 +4,7 @@ import scrapy
 from demo.items import DemoItem
 
 
+
 #        self.headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36',
 #                'accept-Encoding':'gzip,deflate,br',
 #                'Accept-Language': 'zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7',
@@ -14,7 +15,7 @@ from demo.items import DemoItem
 #        self.movieid = []
 
 
-class demoSpider(scrapy.spiders.Spider):
+class demoSpider(scrapy.Spider):    #这里需要继承 scrapy.Spider
 
     name = 'demospider'
     start_urls = {'http://www.qq.com/'}
@@ -31,6 +32,8 @@ class demoSpider(scrapy.spiders.Spider):
         # print(yw_list)
         for g in yw_list:
             item = DemoItem()
+#            .encode("utf-8").decode("unicode_escape")
+            print (type(g.xpath('text()')))
             item['title'] = g.xpath('text()').extract()
             item['href'] = g.xpath('@href').extract()
             yield item
