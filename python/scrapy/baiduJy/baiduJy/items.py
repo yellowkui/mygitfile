@@ -13,7 +13,9 @@ class BaidujyItem(scrapy.Item):
     # name = scrapy.Field()
 
 
-    name = scrapy.Field()
+    title = scrapy.Field()
+    href = scrapy.Field()
+
     djsum = scrapy.Field()
 
     pass

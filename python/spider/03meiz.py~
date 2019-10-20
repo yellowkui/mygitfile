@@ -17,9 +17,9 @@ class get_photo(object):
 
     def __init__(self):
         self.headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36',
-                'Referer':'http://www.mmjpg.com',
+                'Referer':'http://www.mzitu.com',
                 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'}
-        self.target = '/'
+        self.target = 'http://www.mzitu.com/hot/'
 
 
         self.mmids = []
@@ -34,6 +34,7 @@ class get_photo(object):
         req = requests.get(url = self.target,headers =self.headers)
         req.encoding = 'utf-8'
         bs = BeautifulSoup(req.text)
+        print(req.text)
         html_li = bs.find_all('li',class_='like')  ##获取li标签的内容
     
         bs2 = BeautifulSoup(str(html_li))  
@@ -54,7 +55,7 @@ class get_photo(object):
     def getpicCrack(self,url):
         self.headers['Referer'] = ''
 
-        #http://www.mmjpg.com/data.php?id=1402&page=8999
+
 
     def getPicUrl(self,url):
 
@@ -76,11 +77,11 @@ class get_photo(object):
         picid = v_list[1]
 
         crack_headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36',
-                'Referer':'http://www.mmjpg.com/mm/1233',
+                'Referer':'http://www.mzitu.com/mm/1233',
                 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'}
-        crack_url = 'http://www.mmjpg.com/data.php?id='+ picid +'&page=8999' 
+        crack_url = 'http://www.mzitu.com/data.php?id='+ picid +'&page=8999' 
 
-        crack_headers['Referer'] = 'http://www.mmjpg.com/mm/'+picid
+        crack_headers['Referer'] = 'http://www.mzitu.com/mm/'+picid
 
 
         req_c = requests.get(url = crack_url,headers = crack_headers)
