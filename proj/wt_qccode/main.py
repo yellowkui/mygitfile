@@ -8,7 +8,6 @@ from docx.shared import Mm
 from win32com.client import gencache
 from win32com.client import constants, gencache
 
-
 import qrcode
 
 
@@ -22,14 +21,11 @@ def createPdf(wordPath, pdfPath):
     word.Quit(constants.wdDoNotSaveChanges)
 
 
-
-def createQrtodocx(wordPath,charkey):
-
+def createQrtodocx(wordPath, charkey):
     # 显示XML文件
     # print(mydoc._element.xml)
 
     mydoc = Document(docx_filepath)
-
 
     for p in mydoc.paragraphs:
         for r in p.runs:
@@ -43,7 +39,6 @@ def createQrtodocx(wordPath,charkey):
                 # r.clear()
                 # r.add_text('补充内容')
                 r.add_picture(qrimg_bytes, width=Mm(25))
-
 
 
 if __name__ == '__main__':
@@ -62,9 +57,3 @@ if __name__ == '__main__':
         print('PDF文件已生成')
     else:
         print('没找到标签，请检查WORD文档是否有[二维码标记]信息')
-
-
-
-
-
-
