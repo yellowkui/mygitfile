@@ -2,7 +2,7 @@
 
 import io
 import os.path
-
+import fitz
 from docx import Document
 from docx.shared import Mm
 from win32com.client import gencache
@@ -19,6 +19,13 @@ def createPdf(wordPath, pdfPath):
                             Item=constants.wdExportDocumentWithMarkup,
                             CreateBookmarks=constants.wdExportCreateHeadingBookmarks)
     word.Quit(constants.wdDoNotSaveChanges)
+
+
+def createQr(url):
+    qrimg = qrcode.make(url)
+    qrimg_bytes = io.BytesIO()
+    qrimg.save(qrimg_bytes)
+    return qrimg_bytes
 
 
 def createQrtodocx(wordPath, charkey):
@@ -41,6 +48,10 @@ def createQrtodocx(wordPath, charkey):
                 r.add_picture(qrimg_bytes, width=Mm(25))
 
 
+def addImagetoPDF(image):
+    print(1)
+
+
 if __name__ == '__main__':
     # 设置变量
     docx_filepath = 'C:/Users/kui/Desktop/test.docx'
@@ -48,8 +59,22 @@ if __name__ == '__main__':
     url = 'http://www.baidu.com'
     isok = False
 
+    img = createQr(url)
+    print(img)
+
+    x,y = 50, 700
+    px = 75
+    rect = (x, y, x+px, y+px)  #起始锚点横坐标，起始锚点纵坐标，结束锚点横坐标，结束锚点纵坐标
+    img_xref = 0
+
+    with fitz.open(pdf_filepath) as doc:
+        # print(doc[0].getText())
+
+        doc[0].insert_image(rect, stream=img, xref=img_xref)
+        doc.save('C:/Users/kui/Desktop/test2.pdf')
+
     if isok:
-        mydoc.save(docx_filepath)
+        # mydoc.save(docx_filepath)
 
         if os.path.exists(pdf_filepath):
             os.remove(pdf_filepath)
