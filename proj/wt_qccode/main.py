@@ -48,30 +48,31 @@ def createQrtodocx(wordPath, charkey):
                 r.add_picture(qrimg_bytes, width=Mm(25))
 
 
-def addImagetoPDF(image):
-    print(1)
-
-
-if __name__ == '__main__':
-    # 设置变量
-    docx_filepath = 'C:/Users/kui/Desktop/test.docx'
-    pdf_filepath = 'C:/Users/kui/Desktop/test.pdf'
-    url = 'http://www.baidu.com'
-    isok = False
-
-    img = createQr(url)
-    print(img)
-
-    x,y = 50, 700
+def addImagetoPDF(x, y, px, img_bytes, pdf_filepath, filename, saveFilepach):
+    # 定义坐标变量
+    x, y = 50, 700
     px = 75
-    rect = (x, y, x+px, y+px)  #起始锚点横坐标，起始锚点纵坐标，结束锚点横坐标，结束锚点纵坐标
+    rect = (x, y, x + px, y + px)  # 起始锚点横坐标，起始锚点纵坐标，结束锚点横坐标，结束锚点纵坐标
     img_xref = 0
 
     with fitz.open(pdf_filepath) as doc:
         # print(doc[0].getText())
+        doc[0].insert_image(rect, stream=img)
+        doc.save(saveFilepach+'/'+filename)
 
-        doc[0].insert_image(rect, stream=img, xref=img_xref)
-        doc.save('C:/Users/kui/Desktop/test2.pdf')
+
+if __name__ == '__main__':
+    # 设置基础变量
+    filepath = 'C:/Users/kui/Desktop/mypdf'
+    savefilepath = 'C:/Users/kui/Desktop/mypdf_ok'
+    url = 'http://www.baidu.com'
+    isok = False
+
+    for filename in os.listdir(filepath):
+        img = createQr(url)
+        pdf_filepath = filepath + '/' + filename
+        print(pdf_filepath)
+        addImagetoPDF(50, 700, 75, img, pdf_filepath, filename, savefilepath)
 
     if isok:
         # mydoc.save(docx_filepath)
